@@ -326,22 +326,20 @@ export const useCourseState = () => {
       return;
     }
 
-    setTimeout(() => {
-      toPng(SaveMobileRef.current, {
-        cacheBust: true,
-        canvasWidth: 1080,
-        canvasHeight: 2400,
+    toPng(SaveMobileRef.current, {
+      cacheBust: true,
+      canvasWidth: 1080,
+      canvasHeight: 2400,
+    })
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = "mobile-wallpaper.png";
+        link.href = dataUrl;
+        link.click();
       })
-        .then((dataUrl) => {
-          const link = document.createElement("a");
-          link.download = "mobile-wallpaper.png";
-          link.href = dataUrl;
-          link.click();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, 2000); // 3 seconds delay
+      .catch((err) => {
+        console.log(err);
+      });
   }, [SaveMobileRef]);
 
   const saveDesktopWallpaper = useCallback(() => {

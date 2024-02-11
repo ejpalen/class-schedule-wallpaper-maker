@@ -347,6 +347,15 @@ p{
   grid-column: span 2;
 }
 
+#warning-1{
+  font-size: 1rem;
+  color: #F8840F;
+}
+
+#warning{
+  display: none;
+}
+
 .content-wrapper{
   margin: auto;
   margin-top: 20px;
@@ -1651,6 +1660,12 @@ padding: 20px 5px;
   .modal-body-text{
     align-items: center;
     flex: 1;
+  }
+
+  #warning{
+    display: block;
+    font-size: 1rem;
+    color: #F8840F !important;
   }
   
   

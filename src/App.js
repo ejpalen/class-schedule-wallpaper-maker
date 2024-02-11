@@ -888,6 +888,10 @@ const App = () => {
         {/* Settings */}
         <div className="settings-wrapper">
           <h2>Customize</h2>
+          <p id="warning-1">
+            *Currently, blur effects are not rendered when downloaded. I'm
+            working to fix it.
+          </p>
           <div className="settings-wallpaper-wrapper">
             <h3>Text</h3>
             {/* Font Style Tab*/}
@@ -1011,6 +1015,20 @@ const App = () => {
               </div>
             </div>
             <h3>Wallpaper</h3>
+            {navigator.platform === "iPad" ||
+            navigator.platform === "iPhone" ||
+            navigator.platform === "iPod" ? (
+              <p id="warning">
+                *Currently, only the generated mesh gradients are rendered when
+                downloaded on iPhone. Switch to desktop to access other options.
+              </p>
+            ) : (
+              <p id="warning">
+                *Currently, only custom images are not rendered when downloaded
+                on Android. Switch to desktop to render them.
+              </p>
+            )}
+
             {/* Mesh Gradients Wallpaper Tab*/}
             <div
               className={`settings-wallpaper-content ${
