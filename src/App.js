@@ -656,20 +656,38 @@ const App = () => {
                           course.id,
                           schedule.id,
                           day,
-                          schedule.time
+                          schedule.time,
+                          schedule.timeEnd
                         )
                       }
                       courseTime={schedule.time}
-                      setCourseTime={(time) =>
+                      courseTimeEnd={schedule.timeEnd}
+                      setCourseTime={(time, timeEnd) =>
                         handleEditSchedule(
                           course.id,
                           schedule.id,
                           schedule.day,
-                          time
+                          time,
+                          schedule.timeEnd
                         )
                       }
-                      onEdit={(day, time) =>
-                        handleEditSchedule(course.id, schedule.id, day, time)
+                      setCourseTimeEnd={(time, timeEnd) =>
+                        handleEditSchedule(
+                          course.id,
+                          schedule.id,
+                          schedule.day,
+                          time,
+                          timeEnd
+                        )
+                      }
+                      onEdit={(day, time, timeEnd) =>
+                        handleEditSchedule(
+                          course.id,
+                          schedule.id,
+                          day,
+                          time,
+                          timeEnd
+                        )
                       }
                       id={schedule.id}
                       onDelete={() => deleteSchedule(course.id, schedule.id)}
@@ -1024,8 +1042,8 @@ const App = () => {
               </p>
             ) : (
               <p id="warning">
-                *Currently, only custom images are not rendered when downloaded
-                on Android. Switch to desktop to render them.
+                *Currently, custom images are not rendered when downloaded on
+                Android. Switch to desktop to render them.
               </p>
             )}
 
@@ -1547,11 +1565,11 @@ const App = () => {
                         setFontStyle(fontStyles[0].id);
                         setFontColor(fontColors[1]);
                         setContainerSize({
-                          header: "1.5rem",
-                          subheader: "0.875rem",
-                          h4: "1rem",
-                          h5: "0.75rem",
-                          p: "0.625rem",
+                          header: 1.5,
+                          subheader: 0.875,
+                          h4: 1,
+                          h5: 0.75,
+                          p: 0.625,
                         });
                         setWallpaperType("Mesh");
                         setWallpaper(meshWallpaper[0]);
@@ -1586,11 +1604,11 @@ const App = () => {
                         setFontStyle(fontStyles[0].id);
                         setFontColor(fontColors[1]);
                         setContainerSize({
-                          header: "1.5rem",
-                          subheader: "0.875rem",
-                          h4: "1rem",
-                          h5: "0.75rem",
-                          p: "0.625rem",
+                          header: 1.5,
+                          subheader: 0.875,
+                          h4: 1,
+                          h5: 0.75,
+                          p: 0.625,
                         });
                         setWallpaperType("Mesh");
                         setWallpaper(meshWallpaper[0]);

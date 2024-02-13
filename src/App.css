@@ -1668,11 +1668,19 @@ padding: 20px 5px;
     color: #F8840F !important;
   }
   
+  .day-container h4{
+    font-size: 0.875rem;
+  }
+
+  .day-container h5{
+    font-size: 0.75rem;
+  }
+
+  .day-container p{
+    font-size: 0.5rem;
+  }
   
 }
-
-
-
 
 @media (min-width: 800px){
   .controls-middle{
@@ -1691,3 +1699,77 @@ padding: 20px 5px;
   }
 }
 
+.timepicker-container{
+  display: flex;
+  gap: 20px;
+}
+
+.timepicker-container h5{
+  color: #C5C5BE;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.rc-time-picker-clear{
+  display: none !important;
+}
+
+.rc-time-picker *{
+  font-size: 1rem !important;
+}
+
+.rc-time-picker-panel-inner{
+  /* background: #0E100F !important; */
+  box-shadow: none !important;
+  /* border: 2px solid #42433d !important; */
+  border-radius: 5px !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  background: hsla(0, 0%, 0%, 0.6) !important;
+}
+
+li.rc-time-picker-panel-select-option-selected{
+  background: linear-gradient( 165deg, #ADA6FE 52%, #D8D4FF 100% ) !important;
+  color: #0E100F !important;
+}
+
+.rc-time-picker-panel-select li:hover{
+  background: linear-gradient( 165deg, #ADA6FE 52%, #D8D4FF 100% ) !important;
+  color: #0E100F !important;
+}
+
+.rc-time-picker-input{
+  background: none !important;
+  color: #fff !important;
+  border: none !important;
+  border-bottom: 2px solid #42433d !important;
+  border-radius: 0 !important;
+}
+
+.rc-time-picker-clear-icon:after{
+  color: #fff !important;
+}
+
+/* width */
+.rc-time-picker-panel-select::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 20px
+}
+
+/* Track */
+.rc-time-picker-panel-select::-webkit-scrollbar-track {
+  background: #000;
+  border-radius: 20px
+}
+
+/* Handle */
+.rc-time-picker-panel-select::-webkit-scrollbar-thumb {
+  background: linear-gradient( 165deg, #0AE453 52%, #0085d0 100% );
+  border-radius: 20px
+}
+
+/* Handle on hover */
+.rc-time-picker-panel-select::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient( 165deg, #0AE453 52%, #0085d0 100% );
+  ;
+}
