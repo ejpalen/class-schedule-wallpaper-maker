@@ -110,11 +110,11 @@ export const useCourseState = () => {
       name: "Galdern",
       size: "1.2rem",
       containerFontSize: {
-        header: "1.5rem",
-        subheader: "0.875rem",
-        h4: "1rem",
-        h5: "0.75rem",
-        p: "0.625rem",
+        header: 1.5,
+        subheader: 0.875,
+        h4: 1,
+        h5: 0.75,
+        p: 0.625,
       },
     },
     {
@@ -122,11 +122,11 @@ export const useCourseState = () => {
       name: "Syne",
       size: "1rem",
       containerFontSize: {
-        header: "1rem",
-        subheader: "0.75rem",
-        h4: "0.438rem",
-        h5: "0.5rem",
-        p: "0.5rem",
+        header: 1,
+        subheader: 0.75,
+        h4: 0.438,
+        h5: 0.5,
+        p: 0.5,
       },
     },
     {
@@ -134,11 +134,11 @@ export const useCourseState = () => {
       name: "Orbitron ",
       size: "0.833rem",
       containerFontSize: {
-        header: "1rem",
-        subheader: "0.625rem",
-        h4: "0.75rem",
-        h5: "0.625rem",
-        p: "0.5rem",
+        header: 1,
+        subheader: 0.625,
+        h4: 0.75,
+        h5: 0.625,
+        p: 0.5,
       },
     },
     {
@@ -146,11 +146,11 @@ export const useCourseState = () => {
       name: "Plus Jakarta",
       size: "0.833rem",
       containerFontSize: {
-        header: "1.25rem",
-        subheader: "0.625rem",
-        h4: "0.625rem",
-        h5: "0.5rem",
-        p: "0.5rem",
+        header: 1.25,
+        subheader: 0.625,
+        h4: 0.625,
+        h5: 0.5,
+        p: 0.5,
       },
     },
     {
@@ -158,11 +158,11 @@ export const useCourseState = () => {
       name: "Manrope",
       size: "0.833rem",
       containerFontSize: {
-        header: "1.25rem",
-        subheader: "0.625rem",
-        h4: "0.625rem",
-        h5: "0.5rem",
-        p: "0.5rem",
+        header: 1.25,
+        subheader: 0.625,
+        h4: 0.625,
+        h5: 0.5,
+        p: 0.5,
       },
     },
     {
@@ -170,13 +170,11 @@ export const useCourseState = () => {
       name: "Montserrat",
       size: "0.833rem",
       containerFontSize: {
-        header: "1.25rem",
-        subheader: "0.875rem",
-        header: "1.5rem",
-        subheader: "0.625rem",
-        h4: "0.625rem",
-        h5: "0.5rem",
-        p: "0.5rem",
+        header: 1.5,
+        subheader: 0.625,
+        h4: 0.625,
+        h5: 0.5,
+        p: 0.5,
       },
     },
     {
@@ -184,11 +182,11 @@ export const useCourseState = () => {
       name: "Playfair",
       size: "0.833rem",
       containerFontSize: {
-        header: "1.25rem",
-        subheader: "0.75rem",
-        h4: "0.625rem",
-        h5: "0.5rem",
-        p: "0.5rem",
+        header: 1.25,
+        subheader: 0.75,
+        h4: 0.625,
+        h5: 0.5,
+        p: 0.5,
       },
     },
     {
@@ -196,11 +194,11 @@ export const useCourseState = () => {
       name: "Libre",
       size: "0.833rem",
       containerFontSize: {
-        header: "1.25rem",
-        subheader: "0.625rem",
-        h4: "0.625rem",
-        h5: "0.5rem",
-        p: "0.5rem",
+        header: 1.25,
+        subheader: 0.625,
+        h4: 0.625,
+        h5: 0.5,
+        p: 0.5,
       },
     },
     {
@@ -208,11 +206,11 @@ export const useCourseState = () => {
       name: "Lora",
       size: "0.833rem",
       containerFontSize: {
-        header: "1.25rem",
-        subheader: "0.75rem",
-        h4: "0.625rem",
-        h5: "0.5rem",
-        p: "0.5rem",
+        header: 1.25,
+        subheader: 0.75,
+        h4: 0.625,
+        h5: 0.5,
+        p: 0.5,
       },
     },
   ];
@@ -263,11 +261,11 @@ export const useCourseState = () => {
     return savedContainerSize
       ? JSON.parse(savedContainerSize)
       : {
-          header: "1.5rem",
-          subheader: "0.875rem",
-          h4: "1rem",
-          h5: "0.75rem",
-          p: "0.625rem",
+          header: window.innerWidth > 800 ? 1.5 : 1.5 - 0.125,
+          subheader: window.innerWidth > 800 ? 0.875 : 0.875 - 0.125,
+          h4: window.innerWidth > 800 ? 1 : 1 - 0.125,
+          h5: window.innerWidth > 800 ? 0.75 : 0.75 - 0.125,
+          p: window.innerWidth > 800 ? 0.625 : 0.625 - 0.125,
         };
   });
 
@@ -372,14 +370,15 @@ export const useCourseState = () => {
         {
           id: Math.random().toString(36).substr(2, 9),
           day: "Monday",
-          time: "12:00 AM",
+          time: "8:00 AM",
+          timeEnd: "9:00 AM",
         },
       ],
     };
     setCourses((prevCourses) => [...prevCourses, newCourse]);
   };
 
-  const handleEditSchedule = (courseId, scheduleId, day, time) => {
+  const handleEditSchedule = (courseId, scheduleId, day, time, timeEnd) => {
     setCourses((prevCourses) =>
       prevCourses.map((course) =>
         course.id === courseId
@@ -387,7 +386,7 @@ export const useCourseState = () => {
               ...course,
               schedule: course.schedule.map((schedule) =>
                 schedule.id === scheduleId
-                  ? { ...schedule, day: day, time: time }
+                  ? { ...schedule, day: day, time: time, timeEnd: timeEnd }
                   : schedule
               ),
             }
@@ -423,7 +422,8 @@ export const useCourseState = () => {
                 {
                   id: id,
                   day: "",
-                  time: "12:00 AM",
+                  time: "8:00 AM",
+                  timeEnd: "9:00 AM",
                 },
               ],
             }
