@@ -221,7 +221,7 @@ const App = () => {
   const phoneElement = document.getElementById("phone-model");
   const desktopElement = document.getElementById("desktop-model");
 
-  function updateDimensions() {
+  const updateDimensions = () => {
     if (phoneElement) {
       const width = phoneElement.clientWidth;
       setPhoneWidth(width);
@@ -235,7 +235,7 @@ const App = () => {
       setDesktopHeight(height);
       setDesktopBorderRadius(Math.min(width / 15, 140));
     }
-  }
+  };
 
   useEffect(() => {
     updateDimensions();
@@ -307,7 +307,7 @@ const App = () => {
 
   useEffect(() => {
     updateDimensions();
-  }, [size]);
+  }, [, size]);
 
   const handleNewGradient = () => {
     setIndex(history.length);
@@ -316,6 +316,16 @@ const App = () => {
 
   useEffect(() => {
     setIsServer(false);
+
+    const handleLoad = () => {
+      updateDimensions();
+    };
+
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
   }, []);
 
   const handleShareLink = async () => {
@@ -677,7 +687,7 @@ const App = () => {
                           schedule.id,
                           schedule.day,
                           time,
-                          timeEnd
+                          schedule.timeEnd
                         )
                       }
                       onEdit={(day, time, timeEnd) =>
@@ -906,10 +916,9 @@ const App = () => {
         {/* Settings */}
         <div className="settings-wrapper">
           <h2>Customize</h2>
-          <p id="warning-1">
-            *Currently, blur effects are not rendered when downloaded. I'm
-            working to fix it.
-          </p>
+          {/* <p id="warning-1">
+            *Currently, blur effects are not rendered when downloaded.
+          </p> */}
           <div className="settings-wallpaper-wrapper">
             <h3>Text</h3>
             {/* Font Style Tab*/}
@@ -940,6 +949,7 @@ const App = () => {
               >
                 {fontStyles.map((font, index) => (
                   <div
+                    key={font.id}
                     className={`font-style-div ${
                       fontStyle === font.id ? "active" : ""
                     }`}
@@ -989,6 +999,7 @@ const App = () => {
               >
                 {fontColors.map((color, index) => (
                   <div
+                    key={index}
                     style={{ background: color }}
                     className={`font-style-div font-color-div ${
                       fontColor === color ? "active" : ""
@@ -1077,6 +1088,7 @@ const App = () => {
               >
                 {meshWallpaper.map((mesh, index) => (
                   <img
+                    key={index}
                     src={mesh}
                     alt=""
                     className={`${wallpaper === mesh ? "active" : ""}`}
@@ -1167,6 +1179,7 @@ const App = () => {
               >
                 {solidColors.map((solid, index) => (
                   <div
+                    key={index}
                     style={{ background: solid }}
                     alt=""
                     className={`font-style-div font-color-div ${
@@ -1266,11 +1279,11 @@ const App = () => {
                     <p>Use this image</p>
                   </button>
                   <div className="custom-file-upload-container">
-                    <label class="custum-file-upload" for="file">
-                      <div class="icon">
+                    <label className="custum-file-upload" htmlFor="file">
+                      <div className="icon">
                         <img src={uploadIcon} alt="uploadArrow-pic" />
                       </div>
-                      <div class="text">
+                      <div className="text">
                         <p>Click to upload image</p>
                       </div>
                       <input
@@ -1368,6 +1381,9 @@ const App = () => {
                     }}
                   />
                 </div>
+                <p id="warning-1" style={{ marginBottom: 10 }}>
+                  *Currently, blur effects are not rendered when downloaded.
+                </p>
                 <div className="custom-image-controls">
                   <h4 style={{ fontWeight: 400 }}>
                     Opacity: {panelGeneral.opacity}px
@@ -1394,6 +1410,7 @@ const App = () => {
                 >
                   {solidColors.map((solid, index) => (
                     <div
+                      key={index}
                       style={{ background: solid }}
                       alt=""
                       className={`font-style-div font-color-div ${

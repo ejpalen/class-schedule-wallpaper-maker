@@ -18,19 +18,18 @@ const SchedulePicker = ({
 }) => {
   const format = "h:mm a";
 
-  // Get the current time and format it
-  const nowFormatted = moment().format(format);
-
   function onChange(value) {
-    console.log(value && value.format(format));
-    setCourseTime(value && value.format(format));
-    onEdit(courseDay, value && value.format(format));
+    const formattedValue = value ? value.format(format) : null;
+    console.log(formattedValue);
+    setCourseTime(formattedValue);
+    onEdit(courseDay, formattedValue);
   }
 
   function onChangeTimeEnd(value) {
-    console.log(value && value.format(format));
-    setCourseTimeEnd(value && value.format(format)); // Set the timeEnd state
-    onEdit(courseDay, courseTime, value && value.format(format)); // Pass both day, courseTime, and courseTimeEnd
+    const formattedValue = value ? value.format(format) : null;
+    console.log(formattedValue);
+    setCourseTimeEnd(formattedValue);
+    onEdit(courseDay, courseTime, formattedValue);
   }
 
   return (
@@ -44,7 +43,7 @@ const SchedulePicker = ({
               className={`${courseDay === day ? "active" : ""}`}
               onClick={() => {
                 setCourseDay(day);
-                onEdit(day, courseTime); // Pass both day and courseTime
+                onEdit(day, courseTime);
               }}
             >
               {day}
@@ -60,7 +59,7 @@ const SchedulePicker = ({
             <h5>Start Time</h5>
             <TimePicker
               showSecond={false}
-              defaultValue={moment(courseTime, format)} // Set default value to courseTime
+              defaultValue={courseTime ? moment(courseTime, format) : null}
               className="xxx"
               onChange={onChange}
               format={format}
@@ -73,7 +72,9 @@ const SchedulePicker = ({
             <h5>End Time</h5>
             <TimePicker
               showSecond={false}
-              defaultValue={moment(courseTimeEnd, format)} // Set default value to courseTimeEnd
+              defaultValue={
+                courseTimeEnd ? moment(courseTimeEnd, format) : null
+              }
               className="xxx"
               onChange={onChangeTimeEnd}
               format={format}
